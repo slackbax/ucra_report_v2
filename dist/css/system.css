@@ -1,0 +1,60 @@
+body {
+  height: 100vh;
+  background-color: #343a40 !important;
+}
+
+a {
+  cursor: pointer;
+}
+
+.noVisibility {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.bg-head {
+  background: linear-gradient(90deg, rgb(48, 171, 163) 0%, rgb(33, 85, 135) 100%);
+}
+
+.bg-head h3 {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.btn-success {
+  background-color: #30aba3;
+  border-color: #30aba3;
+}
+
+.btn-success:hover, .btn-success:not(:disabled):not(.disabled).active {
+  background-color: #215587;
+  border-color: #215587;
+}
+
+.btn-primary {
+  background-color: #215587;
+  border-radius: 8px;
+}
+
+.btn-form {
+  margin-top: 32px;
+}
+
+.spinner-border {
+  display: none;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  top: 14px;
+  right: 25px;
+}
+
+#result_div {
+  display: none;
+}
+
+#down_link, #restart_link {
+  display: none;
+}
+
+/*# sourceMappingURL=system.css.map */
