@@ -300,8 +300,8 @@ $(document).ready(function () {
         type: 'success'
       }).show()
 
-      //$mtable.clear().draw()
-      //$btnManual.prop('disabled', true)
+      $mtable.clear().draw()
+      $btnManual.prop('disabled', true)
       $down.attr('href', r.url).css('display', 'block')
       $reload.css('display', 'block')
       $result.css('display', 'block');
