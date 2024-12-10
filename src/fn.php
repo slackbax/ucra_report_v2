@@ -67,8 +67,9 @@ function formatDatesArray($arr): array
 {
   $formatted_array = [];
   foreach ($arr as $date) {
-    $d = explode('-', $date);
-    $formatted_array[] = $d[2] . '-' . $d[1] . '-' . $d[0];
+    $t = explode(' ', $date);
+    $d = explode('-', $t[0]);
+    $formatted_array[] = $d[2] . '-' . $d[1] . '-' . $d[0] . ' ' . $t[1];
   }
   return $formatted_array;
 }

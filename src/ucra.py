@@ -9,7 +9,13 @@ def detect_file_format(file_path):
     with open(file_path, 'rb') as f:
         raw_data = f.read(10000)
         encoding = chardet.detect(raw_data)['encoding']
-    df = pd.read_csv(file_path, encoding=encoding)
+        for delimiter in [',', ';', '\t']:
+          df = pd.read_csv(file_path, encoding=encoding, sep = delimiter)
+          if len(list(df.columns)) > 1:
+            sep = delimiter
+            break
+
+    df = pd.read_csv(file_path, encoding=encoding, sep = sep)
     return df, encoding
 
 
@@ -27,7 +33,6 @@ df, encoding = detect_file_format(file_path)
 date_col, systolic_col, diastolic_col, pulse_col = map_columns(df)
 
 # Pre-process the DataFrame
-df = df.iloc[::-1]  # Invert rows
 df.reset_index(drop=True, inplace=True)  # Reset index
 df["eje_x"] = df[date_col].astype(str)
 

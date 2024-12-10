@@ -6,6 +6,7 @@ $(document).ready(function () {
     $btnLoad = $('#btn-load'), $btnMap = $('#btn-map'),
     $formMap = $('#form-mapping'), $folder = $('#folder'),
     $dateSel = $('#date'), $pulseSel = $('#pulse'), $systolicSel = $('#systolic'), $diastolicSel = $('#diastolic'),
+    $ghoraInicio = $('#ghora-inicio'), $horaInicio = $('#hora-inicio'),
     $columnMap = $('#column_map'), $result = $('#result_div'),
     pressureChart = document.getElementById('pressureChart'), heartChart = document.getElementById('heartChart'),
     $formManual = $('#form-manual'), $mdata = $('#mdata'),
@@ -54,6 +55,10 @@ $(document).ready(function () {
   $gdate.datetimepicker({
     format: 'DD/MM/YYYY',
     maxDate: moment()
+  })
+
+  $ghoraInicio.datetimepicker({
+    format: 'LT'
   })
 
   let pChart = '', hChart = '', data = []
@@ -329,21 +334,22 @@ $(document).ready(function () {
   })
 
   $addData.click(function () {
-    if ($mdate.val() === '' || $mpulse.val() === '' || $msystolic.val() === '' || $mdiastolic.val() === '') {
+    if ($mdate.val() === '' || $horaInicio.val() === '' || $mpulse.val() === '' || $msystolic.val() === '' || $mdiastolic.val() === '') {
       new Noty({
         text: '<strong>¡Error!</strong><br>Debes ingresar todos los valores para agregar la fila de datos.',
         type: 'error'
       }).show()
     } else {
-      data.push(JSON.stringify([$mdate.val(), $mpulse.val(), $msystolic.val(), $mdiastolic.val()]))
+      data.push(JSON.stringify([$mdate.val() + ' ' + $horaInicio.val(), $mpulse.val(), $msystolic.val(), $mdiastolic.val()]))
       $mdata.val('[' + data + ']')
       if (data.length >= 3) {
         $btnManual.prop('disabled', false)
       }
       $mtable.row.add([
-        $mdate.val(), $mpulse.val(), $msystolic.val(), $mdiastolic.val()
+        $mdate.val() + ' ' + $horaInicio.val(), $mpulse.val(), $msystolic.val(), $mdiastolic.val()
       ]).draw()
       $mdate.val('')
+      $horaInicio.val('')
       $mpulse.val('')
       $msystolic.val('')
       $mdiastolic.val('')

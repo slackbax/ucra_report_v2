@@ -31,7 +31,7 @@ extract($_GET);
     <div class="wrapper mt-4">
       <div class="row">
         <div class="alert mt-4">
-          <h3>¿Cómo está mi función cardíaca?</h3>
+          <h3>Cuidar la presión arterial: protege tu salud</h3>
         </div>
       </div>
     </div>
@@ -39,19 +39,76 @@ extract($_GET);
 
   <div class="wrapper">
     <div class="row">
-      <div class="alert mt-4 text-white">
-        <h5 class="font-weight-bold mb-3">¿Qué necesitas para calcular tu función cardíaca?</h5>
+      <div class="alert mt-4">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit vehicula odio elementum sodales.
-          Nam et nulla eros. In porta lobortis elementum. Mauris pharetra lacus vel ex dapibus, ut lobortis orci blandit.
+          La presión arterial es la fuerza con la que la sangre circula por tus vasos sanguíneos. Si esta
+          es demasiado alta, aunque muchas veces no presente síntomas, puede causar problemas
+          graves como infartos, derrames cerebrales o insuficiencia renal. Controlarla significa
+          prevenir complicaciones que podrían perjudicar drásticamente tu salud y calidad de vida.
+        </p>
+        <h5 class="font-weight-bold mb-3">Importante: ¡Entrega estos resultados a tu equipo médico!</h5>
+        <p>
+          Este informe y registro gráfico proporciona información sobre cómo se comporta tu
+          presión arterial ambulatoria durante el día en diferentes días de la semana. Estos
+          resultados permitirán a tu equipo médico evaluar con mayor precisión tu salud
+          cardiovascular y ajustar el tratamiento si fuera necesario. Llévalo a tu próxima consulta
+          para aprovechar al máximo esta información.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit vehicula odio elementum sodales.
-          Nam et nulla eros. In porta lobortis elementum. Mauris pharetra lacus vel ex dapibus, ut lobortis orci blandit.
+          <strong>Advertencia:</strong> Si hubiera un registro de Pº arterial mayor o igual 160/100, debes concurrir
+          a la brevedad al consultorio para evaluación por tu médico tratante.
         </p>
       </div>
 
-      <div class="col-10 offset-1 text-center">
+      <div class="col-md-6 offset-md-3">
+        <button class="btn btn-block btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseRecommendations" aria-expanded="false">
+          <i class="fa fa-plus mr-2"></i>Ver recomendaciones de salud
+        </button>
+      </div>
+      <div class="col-md-10 offset-md-1 mt-3">
+        <div id="collapseRecommendations" class="collapse">
+          <div class="card card-body card-success">
+            <ol>
+              <li><strong>Asiste regularmente a tus controles con tu equipo médico:</strong>
+                <ul>
+                  <li>Mide tu presión arterial y sigue las indicaciones si necesitas tratamiento.</li>
+                </ul>
+              </li>
+              <li><strong>Adopta una alimentación saludable:</strong>
+                <ul>
+                  <li>Reduce el consumo de sal (máximo una cucharadita de té al día).</li>
+                  <li>Come más frutas, verduras y alimentos integrales.</li>
+                  <li>Limita las grasas saturadas y los alimentos procesados.</li>
+                  <li>Mantén una hidratación adecuada con una buena ingesta de líquidos.</li>
+                </ul>
+              </li>
+              Se recomienda pedir apoyo de nutricionista (mayor información en anexo nutrición del Portal Salud Renal del CRT).
+              <li><strong>Haz ejercicio regularmente:</strong>
+                <ul>
+                  <li>Camina, baila o realiza actividad física al menos 30 minutos al día, 5 veces a la semana.</li>
+                </ul>
+              </li>
+              <li><strong>Mantén un peso saludable:</strong>
+                <ul>
+                  <li>Evita el sobrepeso y la obesidad, ya que aumenta el riesgo de presión alta.</li>
+                </ul>
+              </li>
+              <li><strong>Evita el consumo excesivo de alcohol y tabaco:</strong>
+                <ul>
+                  <li>Limita el alcohol y, si fumas, busca ayuda para dejarlo.</li>
+                </ul>
+              </li>
+              <li><strong>Controla el estrés:</strong>
+                <ul>
+                  <li>Practica actividades como yoga, meditación o cualquier actividad que te relaje.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-10 offset-1 mt-3 text-center">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-lg btn-success active">
             <input type="radio" name="options" id="option_load" autocomplete="off"><i class="fas fa-upload mr-2"></i>Cargar archivo
@@ -188,14 +245,23 @@ extract($_GET);
 
             <div class="card-body">
               <div class="row">
-                <div class="form-group col-5 offset-1">
-                  <label for="mdate"><i class="fad fa-clock mr-2"></i>Fecha</label>
+                <div class="form-group col-3 offset-1">
+                  <label for="mdate"><i class="fad fa-calendar-alt mr-2"></i>Fecha</label>
                   <div id="gdate" class="input-group date" data-target-input="nearest">
                     <input type="text" id="mdate" name="mdate" class="form-control datetimepicker-input float-right" data-target="#gdate">
                     <div class="input-group-append" data-target="#gdate" data-toggle="datetimepicker">
                       <span class="input-group-text">
                         <i class="fad fa-calendar-alt"></i>
                       </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-2">
+                  <label for="hora-inicio"><i class="fad fa-clock mr-2"></i>Hora</label>
+                  <div class="input-group date" id="ghora-inicio" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" id="hora-inicio" name="h_ini" data-target="#ghora-inicio">
+                    <div class="input-group-append" data-target="#ghora-inicio" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="far fa-clock"></i></div>
                     </div>
                   </div>
                 </div>

@@ -28,14 +28,15 @@ if (extract($_POST)):
 
     $data_array = json_decode($data, true);
     $sheet->setCellValue('A1', 'Date');
-    $sheet->setCellValue('B1', 'Systolic');
-    $sheet->setCellValue('C1', 'Diastolic');
-    $sheet->setCellValue('D1', 'Pulse');
+    $sheet->setCellValue('B1', 'Pulse');
+    $sheet->setCellValue('C1', 'Systolic');
+    $sheet->setCellValue('D1', 'Diastolic');
     $index = 2;
 
     foreach ($data_array as $dkey => $dvalue) {
-      $temp = explode('/', $dvalue[0]);
-      $date = $temp[2] . '-' . $temp[1] . '-' . $temp[0];
+      $temp = explode(' ', $dvalue[0]);
+      $day = explode('/', $temp[0]);
+      $date = $day[2] . '-' . $day[1] . '-' . $day[0] . ' ' . $temp[1];
       $sheet->setCellValue('A' . $index, $date);
 
       $pul = preg_replace('/[^0-9]/', '', $dvalue[1]);
@@ -136,8 +137,7 @@ EOD;
 
     $pdf->SetFont('freesans', '', 13, '', true);
     $html = <<<EOD
-<p style="line-height:22px">A continuación, se documentan los principales descriptores estadísticos y gráficos generados a partir de los datos obtenidos con el dispositivo Omron
-HEM-9200T, monitor de presión arterial (PA) en el marco del proyecto de Telemonitoreo UCRA.</p>
+<p style="line-height:22px">A continuación, se documentan los principales descriptores estadísticos y gráficos generados a partir de los datos ingresados por el paciente, en el marco del proyecto de Telemonitoreo UCRA.</p>
 EOD;
     $pdf->writeHTMLCell(0, 0, 15, '', $html, 0, 1, 0, '', 'J');
 

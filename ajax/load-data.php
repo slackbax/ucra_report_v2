@@ -163,8 +163,7 @@ EOD;
 
     $pdf->SetFont('freesans', '', 13, '', true);
     $html = <<<EOD
-<p style="line-height:22px">A continuación, se documentan los principales descriptores estadísticos y gráficos generados a partir de los datos obtenidos con el dispositivo Omron
-HEM-9200T, monitor de presión arterial (PA) en el marco del proyecto de Telemonitoreo UCRA.</p>
+<p style="line-height:22px">A continuación, se documentan los principales descriptores estadísticos y gráficos generados a partir de los datos obtenidos con un monitor de presión arterial (PA) en el marco del proyecto de Telemonitoreo UCRA.</p>
 EOD;
     $pdf->writeHTMLCell(0, 0, 15, '', $html, 0, 1, 0, '', 'J');
 
