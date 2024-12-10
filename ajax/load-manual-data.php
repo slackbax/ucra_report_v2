@@ -225,6 +225,48 @@ EOD;
     $pdf->setX(15);
     $pdf->Image('../upload/' . $folder . '/HR_plot.png', 15, $pdf->GetY(), 175, '', 'PNG');
 
+    $pdf->ln(80);
+    $pdf->SetFont('freesans', '', 13, '', true);
+    $html = <<<EOD
+<ol>
+  <li><strong>Asiste regularmente a tus controles con tu equipo médico:</strong>
+    <ul>
+      <li>Mide tu presión arterial y sigue las indicaciones si necesitas tratamiento.</li>
+    </ul>
+  </li>
+  <li><strong>Adopta una alimentación saludable:</strong>
+    <ul>
+      <li>Reduce el consumo de sal (máximo una cucharadita de té al día).</li>
+      <li>Come más frutas, verduras y alimentos integrales.</li>
+      <li>Limita las grasas saturadas y los alimentos procesados.</li>
+      <li>Mantén una hidratación adecuada con una buena ingesta de líquidos.</li>
+      <li>Se recomienda pedir apoyo de nutricionista (mayor información en anexo nutrición del Portal Salud Renal del CRT).</li>
+    </ul>
+  </li>
+  <li><strong>Haz ejercicio regularmente:</strong>
+    <ul>
+      <li>Camina, baila o realiza actividad física al menos 30 minutos al día, 5 veces a la semana.</li>
+    </ul>
+  </li>
+  <li><strong>Mantén un peso saludable:</strong>
+    <ul>
+      <li>Evita el sobrepeso y la obesidad, ya que aumenta el riesgo de presión alta.</li>
+    </ul>
+  </li>
+  <li><strong>Evita el consumo excesivo de alcohol y tabaco:</strong>
+    <ul>
+      <li>Limita el alcohol y, si fumas, busca ayuda para dejarlo.</li>
+    </ul>
+  </li>
+  <li><strong>Controla el estrés:</strong>
+    <ul>
+      <li>Practica actividades como yoga, meditación o cualquier actividad que te relaje.</li>
+    </ul>
+  </li>
+</ol>
+EOD;
+    $pdf->writeHTMLCell(0, 0, 15, '', $html, 0, 1, 0, '', 'J');
+
     $pdf->Output(SAVE_FOLDER . '/' . $folder . '/reporte_ucra.pdf', 'F');
 
     $response = array('type' => true, 'msg' => 'OK', 'stats' => $stats, 'url' => 'upload/' . $folder . '/reporte_ucra.pdf');
