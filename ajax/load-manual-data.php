@@ -225,8 +225,13 @@ EOD;
     $pdf->setX(15);
     $pdf->Image('../upload/' . $folder . '/HR_plot.png', 15, $pdf->GetY(), 175, '', 'PNG');
 
-    $pdf->ln(80);
-    $pdf->SetFont('freesans', '', 13, '', true);
+    $pdf->ln(75);
+    $html = <<<EOD
+<p style="line-height:22px;font-weight:bold">Recomendaciones de salud</p>
+EOD;
+    $pdf->writeHTMLCell(0, 0, 15, '', $html, 0, 1, 0, '', 'J');
+
+    $pdf->SetFont('freesans', '', 11, '', true);
     $html = <<<EOD
 <ol>
   <li><strong>Asiste regularmente a tus controles con tu equipo médico:</strong>
